@@ -1,0 +1,19 @@
+#!/bin/python
+import subprocess
+import os
+
+dir_path = r'dir path goes here'
+
+res = []
+for file in os.listdir(dir_path):
+		if file.endswith(('.py', '.txt', '.exe'))
+				res.append(file)
+
+print(res)
+
+#def runcmd("wget -P Oracle https://mb-api.abuse.ch/api/v1"., verbose = True)
+
+print(subprocess.run(["/home/kali/Desktop/Oracle/Oracle.sh"
+				"arguments"], shell=True))
+
+print ("Complete")
