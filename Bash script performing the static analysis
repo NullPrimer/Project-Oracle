@@ -1,0 +1,46 @@
+# Every sample has a unique hash value that can be used to identify the file. This is usefull if the malware has been seen in the wild before.
+
+md5sum.exe $1
+sha256sum.exe $1
+echo -e
+
+echo File
+# This is used to view what type of file the sample is without runing it.
+
+file $1
+echo -e
+
+echo rabin2
+# rabin2 is part of the radare2 tool suite. This function is to show the user the type of binary, what languae is used, the type of eidian used, class of binary, if the binary is stripped, if the file is encrypted and the archtecteure e.g. ARM
+
+rabin2 -I $1
+echo -e
+
+echo Strings
+# Strings will display any human reaable text (this can incudle garbled text) strings may be able to pick up the APIs used by the malware or DLL's used. This can be seen without runing the binary. This is then outputed into a document in the current directory.
+
+strings $1 > String findings
+echo -e
+
+echo Grep
+# Grep is used to search for specific strings within the files.
+
+grep James $1
+echo -e
+
+echo Hexdump
+# Hexdump is a utility that displays the contents of binary files in hexadecimal, decimal, octal, or ASCII. It's a utility for inspection and can be used for **data recovery, reverse engineering, and programming
+
+hexdump -C $1
+echo -e
+
+echo xxd
+# xxd creates a hex dump of a given file or standard input. It can also convert a hex dump back to its original binary form.
+
+xxd $1 | head -n 15
+echo -e
+
+echo Objdump
+objdump displays information about one or more object files. The options control what particular information to display.
+
+objdump -M intel -d $1
